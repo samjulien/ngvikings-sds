@@ -18,4 +18,19 @@ body {
 
 h1 {
   font-family: 'Stardos Stencil', cursive;
+  margin-top: 10px;
+}
+
+h2 {
+  font-family: 'Stardos Stencil', cursive;
+}
+
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+}
+
+.card-body {
+  color: black;
 }
