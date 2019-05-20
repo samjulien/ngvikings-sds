@@ -9,7 +9,7 @@ export const warpComponent = {
       <button type="button" class="btn btn-primary">5</button>
       <button type="button" class="btn btn-primary">7</button>
       <button type="button" class="btn btn-warning">9</button>
-      <button type="button" class="btn btn-danger">9.95</button>
+      <button type="button" class="btn btn-danger shake">9.95</button>
     </div>
   </div>
 </div>
