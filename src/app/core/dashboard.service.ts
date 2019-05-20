@@ -1,4 +1,5 @@
 export class DashboardService {
+  static $inject: string[];
   FIRE_TORPEDOES = 'fire-torpedoes';
   constructor(private $rootScope) {}
 
