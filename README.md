@@ -1,6 +1,6 @@
 # ngVikings: Starship Dashboard System
 
-This is the sample project for Sam Julien and Mike Ryan's talk at ngVikings 2019: "STORE TREK: The Voygage to Angular."
+This is the sample project for [Sam Julien](https://twitter.com/samjulien) and [Mike Ryan's](https://twitter.com/MikeRyanDev) talk at [ngVikings 2019](https://ngvikings.org/schedule/2019-05-27?sessionId=203): "STORE TREK: The Voygage to Angular."
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0-rc.4.
 
