@@ -1,6 +1,6 @@
 export const warpComponent = {
   template: `
-  <div class="card" style="width: 18rem;">
+  <div class="card">
   <div class="card-body">
     <h5 class="card-title">Warp</h5>
     <p class="card-text">This ship is equipped with a warp drive for traveling beyond light speed.</p>

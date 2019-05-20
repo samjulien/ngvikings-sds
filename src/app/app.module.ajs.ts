@@ -5,6 +5,7 @@ import { statusComponent } from './status/status.component';
 import { shieldsComponent } from './shields/shields.component';
 import { weaponsComponent } from './weapons/weapons.component';
 import { warpComponent } from './warp/warp.component';
+import { DashboardService } from './core/dashboard.service';
 
 const MODULE_NAME = 'sds-legacy';
 
@@ -28,6 +29,7 @@ angular
   .component('status', statusComponent)
   .component('shields', shieldsComponent)
   .component('weapons', weaponsComponent)
-  .component('warp', warpComponent);
+  .component('warp', warpComponent)
+  .service('dashboardService', DashboardService);
 
 export default MODULE_NAME;
