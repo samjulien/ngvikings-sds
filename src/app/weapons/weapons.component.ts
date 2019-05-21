@@ -4,7 +4,7 @@ export const weaponsComponent = {
     <div class="card-body">
       <h5 class="card-title">Weapons</h5>
       <p class="card-text">Photon torpedoes are a standard ship-based weapon armed with an antimatter warhead.</p>
-      <a href="#" class="btn btn-danger" ng-click="$ctrl.fireWeapons()">Fire photon torpedoes</a>
+      <button type="button" class="btn btn-danger" ng-click="$ctrl.fireWeapons()">Fire photon torpedoes</button>
     </div>
   </div>
   `,
