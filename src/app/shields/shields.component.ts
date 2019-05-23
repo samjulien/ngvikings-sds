@@ -1,3 +1,9 @@
+import { Store } from '@ngrx/store';
+import {
+  createRaiseShieldsAction,
+  createLowerShieldsAction
+} from './shields.actions';
+
 export const shieldsComponent = {
   template: `
   <div class="card">
@@ -5,8 +11,8 @@ export const shieldsComponent = {
     <h5 class="card-title">Shields</h5>
     <p class="card-text">Deflector shields provide limited protection from damage.</p>
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" ng-click="$ctrl.shields('up')" class="btn btn-primary">Raise</button>
-      <button type="button" ng-click="$ctrl.shields('down')" class="btn btn-primary">Lower</button>
+      <button type="button" ng-click="$ctrl.raiseShields()" class="btn btn-primary">Raise</button>
+      <button type="button" ng-click="$ctrl.lowerShields()" class="btn btn-primary">Lower</button>
     </div>
   </div>
 </div>
@@ -15,11 +21,10 @@ export const shieldsComponent = {
   controller: shieldsController
 };
 
-shieldsController.$inject = ['dashboardService'];
-function shieldsController(dashboardService) {
+shieldsController.$inject = ['Store'];
+function shieldsController(store: Store<any>) {
   const vm = this;
 
-  vm.shields = status => {
-    dashboardService.shields(status);
-  };
+  vm.raiseShields = () => store.dispatch(createRaiseShieldsAction());
+  vm.lowerShields = () => store.dispatch(createLowerShieldsAction());
 }

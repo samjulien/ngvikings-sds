@@ -1,3 +1,6 @@
+import { Store } from '@ngrx/store';
+import { createSelectWarpSpeedAction } from './warp.actions';
+
 export const warpComponent = {
   template: `
   <div class="card">
@@ -18,11 +21,9 @@ export const warpComponent = {
   controller: warpController
 };
 
-warpController.$inject = ['dashboardService'];
-function warpController(dashboardService) {
+warpController.$inject = ['Store'];
+function warpController(store: Store<any>) {
   const vm = this;
 
-  vm.warpFactor = factor => {
-    dashboardService.warp(factor);
-  };
+  vm.warpFactor = factor => store.dispatch(createSelectWarpSpeedAction(factor));
 }

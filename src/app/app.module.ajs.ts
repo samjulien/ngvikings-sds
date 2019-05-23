@@ -1,11 +1,13 @@
 import * as angular from 'angular';
 import 'angular-route';
+import { downgradeInjectable } from '@angular/upgrade/static';
+import { Store } from '@ngrx/store';
 import { dashboardComponent } from './dashboard/dashboard.component';
 import { statusComponent } from './status/status.component';
 import { shieldsComponent } from './shields/shields.component';
 import { weaponsComponent } from './weapons/weapons.component';
 import { warpComponent } from './warp/warp.component';
-import { DashboardService } from './core/dashboard.service';
+import { WeaponsService } from './weapons/weapons.service';
 
 const MODULE_NAME = 'sds-legacy';
 
@@ -30,6 +32,7 @@ angular
   .component('shields', shieldsComponent)
   .component('weapons', weaponsComponent)
   .component('warp', warpComponent)
-  .service('dashboardService', DashboardService);
+  .service('weaponsService', WeaponsService)
+  .factory('Store', downgradeInjectable(Store));
 
 export default MODULE_NAME;

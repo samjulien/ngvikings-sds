@@ -1,3 +1,6 @@
+import { Store } from '@ngrx/store';
+import * as fromRoot from 'src/app/shared/state';
+
 export const statusComponent = {
   template: `
   <div class="card text-center">
@@ -18,23 +21,37 @@ export const statusComponent = {
   controller: statusController
 };
 
-statusController.$inject = ['$scope', 'dashboardService'];
-function statusController($scope, dashboardService) {
+statusController.$inject = ['$scope', 'Store'];
+function statusController($scope, store: Store<fromRoot.AppState>) {
   const vm = this;
   vm.status = 'All systems functional.';
   vm.weaponsStatus = 'Weapons online.';
   vm.shieldsStatus = 'Shields online.';
   vm.warpFactor = 3;
 
-  dashboardService.onFireTorpedoes($scope, msg => {
-    vm.weaponsStatus = msg;
-  });
+  const torpedoesSubscription = store
+    .select(fromRoot.selectShipIsFiringTorpedoes)
+    .subscribe(isFiringTorpedoes => {
+      vm.weaponsStatus = isFiringTorpedoes
+        ? 'Firing torpedoes!'
+        : 'Weapons online.';
+    });
 
-  dashboardService.onShields($scope, msg => {
-    vm.shieldsStatus = msg;
-  });
+  const shieldsSubscription = store
+    .select(fromRoot.selectShipShieldsAreRaised)
+    .subscribe(areShieldsRaised => {
+      vm.shieldsStatus = areShieldsRaised ? 'Shields up!' : 'Shields online.';
+    });
 
-  dashboardService.onWarp($scope, (factor: number) => {
-    vm.warpFactor = factor;
-  });
+  const warpSpeedSubscription = store
+    .select(fromRoot.selectShipWarpSpeed)
+    .subscribe(warpSpeed => {
+      vm.warpFactor = warpSpeed;
+    });
+
+  vm.$onDestroy = () => {
+    torpedoesSubscription.unsubscribe();
+    shieldsSubscription.unsubscribe();
+    warpSpeedSubscription.unsubscribe();
+  };
 }

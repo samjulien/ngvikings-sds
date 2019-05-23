@@ -1,3 +1,6 @@
+import { Store } from '@ngrx/store';
+import { createFireTorpedoesAction } from './weapons.actions';
+
 export const weaponsComponent = {
   template: `
   <div class="card">
@@ -12,11 +15,9 @@ export const weaponsComponent = {
   controller: weaponsController
 };
 
-weaponsController.$inject = ['dashboardService'];
-function weaponsController(dashboardService) {
+weaponsController.$inject = ['Store'];
+function weaponsController(store: Store<any>) {
   const vm = this;
 
-  vm.fireWeapons = () => {
-    dashboardService.fireTorpedoes();
-  };
+  vm.fireWeapons = () => store.dispatch(createFireTorpedoesAction());
 }
